@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {addTodoTC, getTodosTC, removeTodoTC, TodolistStateType, updateTodoTC} from "./todos-reducer";
-import {AppRootState} from "../../app/store";
+import {AppRootStateType} from "../../app/store";
 import {EditableSpan} from "../../common/components/EditableSpan/EditableSpan";
 import {Loader} from "../../common/components/Loader/Loader";
 import {Navigate} from "react-router-dom";
@@ -12,9 +12,9 @@ export function Todos() {
     const dispatch: any = useDispatch()
 
 
-    const todos = useSelector<AppRootState, TodolistStateType>((state) => state.todos)
-    const isLoading = useSelector<AppRootState, boolean>((state) => state.app.isLoading)
-    const isLogIn = useSelector<AppRootState, boolean>((state) => state.app.isLogIn)
+    const todos = useSelector<AppRootStateType, TodolistStateType>((state) => state.todos)
+    const isLoading = useSelector<AppRootStateType, boolean>((state) => state.app.isLoading)
+    const isLogIn = useSelector<AppRootStateType, boolean>((state) => state.app.isLogIn)
 
     // + POST
     console.log(todos)
