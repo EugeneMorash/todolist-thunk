@@ -31,9 +31,8 @@ export const appReducer = (state: AppStateType = initialState, action: AppAction
         case "APP/SET-LOG-OUT":
             return {
                 ...state,
-                // isLogIn: action.isLogIn
+                isLogIn: action.isLogIn
             }
-
         default:
             return state
     }
@@ -87,9 +86,9 @@ export const loginTC = (values: LoginDataType) => {
     }
 }
 
-export const logoutTC = (values: LoginDataType) => {
+export const logoutTC = () => {
     return (dispatch: any) => {
-        authAPI.login(values)
+        authAPI.logout()
             .then((res) => {
                 if (res.data.resultCode === 0) {
                     dispatch(setLogOutAC(false))
@@ -100,6 +99,5 @@ export const logoutTC = (values: LoginDataType) => {
             .catch((e: AxiosError) => {
                 alert(e.message)
             })
-
     }
 }
